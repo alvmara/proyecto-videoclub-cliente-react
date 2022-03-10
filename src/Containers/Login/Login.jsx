@@ -1,14 +1,20 @@
 import { Button, Container, FormControl, FormHelperText, FormLabel, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import axios from 'axios';
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const loguearse = () => {
+  const loguearse = async () => {
     // No hace nada
     console.log('Enviar datos al servidor para loguarse');
+    const datos = await axios.post("http://localhost:5500/usuarios/login", {email, password });
+
+    console.log(datos);
+
+    localStorage.setItem("datos_login",JSON.stringify(datos.data));
   }
 
   return (
