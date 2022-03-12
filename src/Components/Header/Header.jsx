@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react';
-import React, { Fragment, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LOGOUT } from '../../redux/types';
