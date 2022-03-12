@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, MODIFY_CREDENTIALS } from "../types";
+import { LOGIN, LOGOUT } from "../types";
 
 const initialState = {
   token: null,

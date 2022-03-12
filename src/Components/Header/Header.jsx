@@ -6,15 +6,15 @@ import './Header.css';
 function DatosUsuario(props) {
     
     return <>
-        <h2>{props.nombre}</h2>
+        <h2>{props.name}</h2>
 
         <Button>Logout</Button>
     </>    
 }
 
 function Header() {
-    const mostarDatosUsuario = useSelector(store => store.credentials.token !== "");
-    const nombre = useSelector(store => store.credentials.usuario.nombre);
+    const mostarDatosUsuario = useSelector(store => store.credentials.token !== null);
+    const { name } = useSelector(store => store.credentials.usuario || {});
 
   return (
     <header className='myHeader'>
@@ -22,7 +22,7 @@ function Header() {
 
         <div className='right'>
 
-            { mostarDatosUsuario && <DatosUsuario nombre={nombre} />  }
+            { mostarDatosUsuario && <DatosUsuario name={name} />  }
         </div>
     </header>
   )
