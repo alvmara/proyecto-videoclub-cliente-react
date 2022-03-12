@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [datosIncorrectos, setDatosIncorrectos] = useState(false);
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const loguearse = async () => {
     // No hace nada

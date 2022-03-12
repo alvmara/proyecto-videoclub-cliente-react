@@ -1,0 +1,13 @@
+.myHeader {
+  width: 100vw;
+  height: 68px;
+  display: flex;
+  padding: 5px 50px;
+  align-items: center;
+}
+
+.myHeader > .right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}

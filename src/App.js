@@ -7,12 +7,15 @@ import Registro from "./Containers/Registro/Registro";
 import Peliculas from "./Containers/Peliculas/Peliculas";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import Header from "./Components/Header/Header";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <ChakraProvider>
+          <Header />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
