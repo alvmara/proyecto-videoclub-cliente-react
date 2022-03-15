@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function PeliculaCard({ pelicula }) {
     /**
@@ -14,9 +15,11 @@ function PeliculaCard({ pelicula }) {
         updatedAt: "2022-03-10T17:06:39.000Z"
      */
 
+    const navigate = useNavigate();
+
   return (
     <div>
-        <img src={pelicula.image} alt={pelicula.titulo} />
+        <img onClick={() => navigate(`/pelicula/${pelicula.id}`)} src={pelicula.image} alt={pelicula.titulo} />
         <div>{pelicula.titulo}</div>
         <div>{pelicula.updatedAt}</div>
     </div>

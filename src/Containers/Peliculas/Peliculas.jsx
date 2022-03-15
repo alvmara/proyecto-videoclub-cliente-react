@@ -2,10 +2,13 @@ import { Button, Container, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import PeliculaCard from './PeliculaCard/PeliculaCard';
+import { useNavigate } from 'react-router-dom';
 
 const Peliculas = () => {
   const [pelis, setPelis] = useState([]);
   const [indice, setIndice] = useState(20);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:5500/peliculas")
