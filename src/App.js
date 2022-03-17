@@ -8,6 +8,7 @@ import Peliculas from "./Containers/Peliculas/Peliculas";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
+import PeliculaDetalle from "./Containers/PeliculaDetalle/PeliculaDetalle";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/peliculas" element={<Peliculas />} />
-            <Route path="/pelicula/[id]" element={<Peliculas />} />
+            <Route path="/pelicula/:peliculaId" element={<PeliculaDetalle />} />
           </Routes>
         </ChakraProvider>
       </BrowserRouter>

@@ -19,11 +19,11 @@ function PeliculaCard({ pelicula }) {
 
   return (
     <div>
-        <img onClick={() => navigate(`/pelicula/${pelicula.id}`)} src={pelicula.image} alt={pelicula.titulo} />
+        <img onClick={() =>navigate(`/pelicula/${pelicula.id}`)} src={pelicula.image} alt={pelicula.titulo}  style={{ width: "200px", height: "200px" }}/>
         <div>{pelicula.titulo}</div>
         <div>{pelicula.updatedAt}</div>
     </div>
   )
 }
 
-export default PeliculaCard
+export default PeliculaCard;
