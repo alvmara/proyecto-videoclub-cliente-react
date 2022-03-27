@@ -6,6 +6,8 @@ import { LOGOUT } from '../../redux/types';
 import './Header.css';
 
 function DatosUsuario(props) {
+    const { name } = useSelector(store => store.credentials.usuario || {});
+    const isAdmin = useSelector(store => store.credentials.usuario.rol);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -14,27 +16,29 @@ function DatosUsuario(props) {
         dispatch({ type: LOGOUT });
         navigate("/");
     }
-    
-    return <>
-        <h2>{props.name}</h2>
 
-        <Button onClick={(evento) =>{desLoguearse(evento)}}>Logout</Button>
-    </>    
+    return <>
+        <h2>{name}</h2>
+
+        {isAdmin && <Button onClick={() => navigate('/admin')}>Admin</Button>}
+
+        <Button onClick={(evento) => { desLoguearse(evento) }}>Logout</Button>
+    </>
 }
 
 function Header() {
     const mostarDatosUsuario = useSelector(store => store.credentials.token !== null);
-    const { name } = useSelector(store => store.credentials.usuario || {});
 
-  return (
-    <header className='myHeader'>
-        <h1>Mi videoclub</h1>
+    return (
+        <header className='myHeader'>
+            <h1>Mi videoclub</h1>
 
-        <div className='right'>
-            { mostarDatosUsuario && <DatosUsuario name={name} />  }
-        </div>
-    </header>
-  )
+            <div className='right'>
+                {mostarDatosUsuario && <DatosUsuario />}
+            </div>
+
+        </header>
+    )
 }
 
 export default Header

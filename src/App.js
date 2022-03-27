@@ -5,10 +5,12 @@ import Home from "./Containers/Home/Home";
 import Login from "./Containers/Login/Login";
 import Registro from "./Containers/Registro/Registro";
 import Peliculas from "./Containers/Peliculas/Peliculas";
+import PeliculaDetalle from "./Containers/PeliculaDetalle/PeliculaDetalle";
+import Admin from "./Containers/Admin/Admin";
+
+import Header from "./Components/Header/Header";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import Header from "./Components/Header/Header";
-import PeliculaDetalle from "./Containers/PeliculaDetalle/PeliculaDetalle";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/peliculas" element={<Peliculas />} />
             <Route path="/pelicula/:peliculaId" element={<PeliculaDetalle />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </ChakraProvider>
       </BrowserRouter>
