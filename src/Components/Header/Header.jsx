@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -17,13 +17,14 @@ function DatosUsuario(props) {
         navigate("/");
     }
 
-    return <>
-        <h2>{name}</h2>
+    return <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <Text as="h2" fontSize="md" fontWeight="bold">{name}</Text>
 
-        {isAdmin && <Button onClick={() => navigate('/admin')}>Admin</Button>}
+        {isAdmin && <Button backgroundColor="blue.400" color="white" onClick={() => navigate('/admin')}>Admin</Button>
+        }
 
         <Button onClick={(evento) => { desLoguearse(evento) }}>Logout</Button>
-    </>
+    </div >
 }
 
 function Header() {
@@ -31,7 +32,7 @@ function Header() {
 
     return (
         <header className='myHeader'>
-            <h1>Mi videoclub</h1>
+            <Text as="h1" fontSize="xl" color="pink.700" fontWeight="bold">Mi videoclub</Text>
 
             <div className='right'>
                 {mostarDatosUsuario && <DatosUsuario />}

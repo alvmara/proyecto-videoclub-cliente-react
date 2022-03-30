@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 68px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

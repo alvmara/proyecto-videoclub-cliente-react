@@ -1,16 +1,29 @@
+import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 
 function PedidoCard(props) {
 
-    return (
-        <div style={{ border: "1px solid black" }}>
-            {/* <p>{JSON.stringify(props.pedido)}</p> */}
+    const date = new Date(props.pedido.createdAt);
 
-            <div>{props.pedido.nombreUsuario}</div>
-            <div>{props.pedido.tituloPelicula}</div>
-            <div>{props.pedido.precio} $</div>
-            <div>{props.pedido.createdAt}</div>
-        </div>
+    return (
+        <Box borderWidth='1px' borderRadius='md' overflow="hidden"
+            style={{ display: 'flex', gap: '20px', marginBlock: '20px' }}
+        >
+            <div>
+                <img style={{ width: '48px', height: '48px' }}
+                    alt="avatar"
+                    src="https://api.minimalavatars.com/avatar/random/png" />
+
+                <Text>{props.pedido.nombreUsuario}</Text>
+            </div>
+
+
+            <div>
+                <Text>Película: {props.pedido.tituloPelicula}</Text>
+                <Text>Precio: {props.pedido.precio} $</Text>
+                <Text>Fecha del pedido: {date.toLocaleDateString()}</Text>
+            </div>
+        </Box>
     )
 }
 

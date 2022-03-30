@@ -1,4 +1,4 @@
-import { Container, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -31,15 +31,6 @@ const Admin = () => {
     // traer los pedidos
     axios.get('http://localhost:5500/pedidos', { headers })
       .then((res) => setPedidos(res.data));
-  }, []);
-
-
-  useEffect(() => {
-    console.log(usuarios);
-  });
-
-  useEffect(() => {
-    console.log(pedidos);
   });
 
   return (
@@ -47,12 +38,17 @@ const Admin = () => {
       <Text fontSize='6xl' color='violet' fontWeight="bold" dropShadow="lg">Admin</Text>
 
       {/* Visualizar pedidos */}
-      <Text>Pedidos</Text>
-      {pedidos.map(pedido => <PedidoCard pedido={pedido} />)}
+      <Text fontSize="xl" marginTop="12">Pedidos</Text>
+
+      <Box paddingInline="8">
+        {pedidos.map(pedido => <PedidoCard key={pedido.id} pedido={pedido} />)}
+      </Box>
 
       {/* Visualizar usuarios */}
-      <Text>Usuarios</Text>
-      {usuarios.map(usuario => <UsuarioCard usuario={usuario} />)}
+      <Text fontSize="xl" marginTop="12">Usuarios</Text>
+      <Box paddingInline="8">
+        {usuarios.map(usuario => <UsuarioCard key={usuario.id} usuario={usuario} />)}
+      </Box>
 
     </div>
   )

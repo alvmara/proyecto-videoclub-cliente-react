@@ -1,4 +1,4 @@
-import { Container, Text, Button } from '@chakra-ui/react'
+import { Container, Text, Button, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -10,10 +10,11 @@ const PeliculaDetalle = () => {
   const { peliculaId } = useParams();
   const token = useSelector(store => store.credentials.token);
   const usuario = useSelector(store => store.credentials.usuario);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
 
-  const hacerPedido = () => {
+  const hacerPedido = async () => {
     let body = {
       precio: 5,
       peliculaId: peli.id,
@@ -23,7 +24,9 @@ const PeliculaDetalle = () => {
 
     }
 
-    axios.post("http://localhost:5500/pedidos", body);
+    await axios.post("http://localhost:5500/pedidos", body);
+
+    onOpen();
   }
 
 
@@ -53,7 +56,26 @@ const PeliculaDetalle = () => {
       <Text fontSize='6xl' color='violet' fontWeight="bold" dropShadow="lg">PeliculaDetalle</Text>
 
       {peli !== null && <PeliculaCard pelicula={peli} />}
-      <Button onClick={() => hacerPedido()}> Alquilar</Button>
+      <Button onClick={() => hacerPedido()} > Alquilar</Button>
+
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Tu pedido ha sido realizado con éxito!!!</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text mb='1rem'>
+              Has alquilado la pelicula <Text fontWeight='bold' as='span'>{peli.titulo}</Text>, gracias por confiar en nosotros.
+            </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Container>
   )
 }
