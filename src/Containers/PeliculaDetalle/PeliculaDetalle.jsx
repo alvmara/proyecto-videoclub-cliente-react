@@ -65,7 +65,7 @@ const PeliculaDetalle = () => {
           <ModalCloseButton />
           <ModalBody>
             <Text mb='1rem'>
-              Has alquilado la pelicula <Text fontWeight='bold' as='span'>{peli.titulo}</Text>, gracias por confiar en nosotros.
+              {/* Has alquilado la pelicula <Text fontWeight='bold' as='span'>{peli.titulo}</Text>, gracias por confiar en nosotros. */}
             </Text>
           </ModalBody>
 
